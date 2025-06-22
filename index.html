@@ -121,30 +121,38 @@
             line-height: 24px; 
         }
         /* Logo 樣式 */
-        .lndata-logo {
+        .lndata-logo, .fs-logo {
             position: fixed;
-            right: 1.5rem; /* 24px */
-            bottom: 1.5rem; /* 24px */
+            bottom: 1.5rem;
             opacity: 0.6;
-            transition: opacity 0.3s ease-in-out;
+            transition: all 0.5s ease-in-out;
             z-index: 1000;
         }
-        .lndata-logo:hover {
-            opacity: 1;
+        .lndata-logo {
+            right: 1.5rem; 
         }
-        .lndata-logo img {
+        .fs-logo {
+            left: 1.5rem; 
+        }
+        .lndata-logo:hover , .fs-logo:hover {
+            opacity: 1;
+            transform: translateY(-4px);
+        }
+        .lndata-logo img , .fs-logo img {
             width: 120px;
         }
     </style>
 </head>
 <body class="gradient-bg text-white min-h-screen flex items-center justify-center p-4">
 
-    <div id="app-container" class="w-full max-w-md mx-auto">
+    <div id="app-container" class="w-full max-w-lg mx-auto">
         
         <!-- 開始畫面 -->
         <div id="start-screen" class="card rounded-2xl p-8 text-center animate-fade-in">
-            <h1 class="text-3xl font-bold mb-2">我的 LnData 人生儀表板</h1>
-            <p class="text-gray-300 mb-6">透過幾個問題，生成你獨一無二的人生數據！</p>
+            <h1 class="text-3xl font-bold mb-2">數力覺醒：AI銀河轉型啟航</h1>
+            <p class="text-gray-300 mb-2 ml-4 mr-4 text-center">留下您的名片並開始遊戲！完成即可領取紀念小物與抽取更多大獎！</p>
+            <hr>
+            <p class="text-gray-300 mt-2 mb-6 text-left text-sm">在浩瀚的商業宇宙中，傳說存在著一個名為「繁榮星系」的地方。然而，航道上充滿了未知的「數據黑洞」與「維運隕石風暴」。作為肩負企業未來的艦隊指揮官，你必須喚醒體內潛藏的「數力」，從零開始打造一支無堅不摧的AI艦隊。你的每一個決策，都將決定艦隊的命運。指揮官，請下達你的指令，啟航吧！</p>
             
             <div class="grid grid-cols-3 gap-4 items-center mb-6">
                 <div class="col-span-1">
@@ -154,100 +162,100 @@
                 <div class="col-span-2 text-left bg-gray-800/50 p-4 rounded-lg">
                     <h3 class="font-bold mb-2 text-lg">遊戲規則</h3>
                     <ul class="list-disc list-inside text-sm space-y-1 text-gray-300">
-                        <li>回答所有問題，產生儀表板。</li>
-                        <li>下載你的專屬儀表板圖片。</li>
-                        <li>公開分享至社群並完成指定 Hashtag。</li>
+                        <li>建立你的艦隊檔案。</li>
+                        <li>回答所有情境題，決定艦隊的命運。</li>
+                        <li>獲得你的指揮官稱號與結局。</li>
                         <li>向工作人員出示畫面即可兌換獎勵！</li>
                     </ul>
                 </div>
             </div>
 
-            <button id="start-btn" class="btn-primary w-full py-3 rounded-lg text-lg font-bold">🚀 開始測驗</button>
-            <p class="text-xs text-gray-500 mt-6">由 LnData 麟數據科技溫馨呈獻</p>
+            <button id="start-btn" class="btn-primary w-full py-3 rounded-lg text-lg font-bold">🚀 建立艦隊檔案</button>
         </div>
 
         <!-- 問答畫面 -->
         <div id="quiz-screen" class="hidden">
             <div id="quiz-container" class="card rounded-2xl p-6 sm:p-8">
-                <!-- 問題進度條 -->
                 <div class="mb-6">
                     <div class="flex justify-between items-center mb-1">
-                         <span id="question-number" class="text-sm font-semibold text-blue-300">問題 1 / 7</span>
-                         <span id="question-title" class="text-lg font-bold">你的名字</span>
+                         <span id="question-number" class="text-sm font-semibold text-blue-300"></span>
+                         <span id="question-title" class="text-lg font-bold"></span>
                     </div>
                     <div class="w-full bg-gray-600 rounded-full h-2.5">
-                        <div id="progress-bar" class="bg-blue-500 h-2.5 rounded-full transition-all duration-500" style="width: 14.28%"></div>
+                        <div id="progress-bar" class="bg-blue-500 h-2.5 rounded-full transition-all duration-500"></div>
                     </div>
                 </div>
                 
-                <!-- 問題內容 -->
                 <div id="questions-wrapper" class="overflow-hidden">
-                    <!-- 問題1: 姓名 -->
+                    <!-- 檔案建立 -->
                     <div id="question-1" class="w-full flex-shrink-0">
-                        <h2 class="text-xl mb-4">請告訴我們你的名字或暱稱</h2>
-                        <p class="text-sm text-gray-400 mb-4">這會顯示在你的專屬儀表板標題上。</p>
-                        <input id="name-input" type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="你的酷炫暱稱">
-                        <button id="name-submit-btn" class="btn-primary w-full py-3 rounded-lg text-lg font-bold mt-6">下一步</button>
+                        <h2 class="text-xl mb-4">建立你的艦隊檔案：</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="name-input" class="block text-base mb-2">指揮官，你的名字是？</label>
+                                <input id="name-input" type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="你的代號">
+                            </div>
+                            <div>
+                                <label for="mascot-input" class="block text-base mb-2">你的艦隊吉祥物是什麼？</label>
+                                <input id="mascot-input" type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white" placeholder="例如：太空柯基、機器貓">
+                            </div>
+                            <div>
+                                <label for="slogan-input" class="block text-base mb-2">你的AI之力武器是什麼？</label>
+                                <input id="slogan-input" type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white" placeholder="例如：資料光劍、IT原力">
+                            </div>
+                        </div>
+                        <button id="name-submit-btn" class="btn-primary w-full py-3 rounded-lg text-lg font-bold mt-8">檔案建立，開始任務</button>
                     </div>
 
-                    <!-- 問題2: 心情 -->
+                    <!-- 問題2: 艦隊基石 -->
                     <div id="question-2" class="w-full flex-shrink-0 hidden">
-                        <h2 class="text-xl mb-4">對於這次的成果，你的心情更接近？</h2>
+                        <h2 class="mb-4">情境：啟航的命令已下達，但艦橋上的星圖顯示，從各偵察艦傳回的數據訊號 (顧客數據) 雜亂無章、互相衝突。你的首要任務是？</h2>
                         <div class="space-y-3">
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="A" data-next="3"><span class="text-2xl mr-3">🥳</span> 超乎預期！解鎖新成就！</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="B" data-next="3"><span class="text-2xl mr-3">😌</span> 嗯，在掌握之中。</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="C" data-next="3"><span class="text-2xl mr-3">🤔</span> 有點小遺憾，但準備 move on！</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="D" data-next="3"><span class="text-2xl mr-3">🤯</span> 數據太亂，需要重新開機！</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="3">🌌憑直覺和過往的航行日誌，隨便選一個方向前進。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="3">🌌只專注在最大、最清楚的單一訊號源。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="3">🌌命令航圖師手動將所有訊號數據匯出，整理成一張巨大的星圖表。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="3">🌌啟用「360數據星盤」，將所有偵察艦的訊號自動整合、校準，繪製成一張統一、即時的360度全景星圖。</div>
                         </div>
                     </div>
-                    <!-- 問題3: 學習力 -->
+                    <!-- 問題3: 引擎打造 -->
                     <div id="question-3" class="w-full flex-shrink-0 hidden">
-                        <h2 class="text-xl mb-4">當一本超厚的書或新技能擺在面前，你的反應是？</h2>
+                        <h2 class="text-xl mb-4">情境：你擁有了完整的星圖，但要進行超光速的AI運算，需要一顆強大且穩定的超光速引擎。你會如何打造艦隊的動力核心？</h2>
                         <div class="space-y-3">
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="75" data-next="4"><span class="font-bold text-blue-300">濃縮咖啡型：</span>給我重點就好</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="85" data-next="4"><span class="font-bold text-blue-300">手沖慢燉型：</span>慢慢來，享受過程</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="95" data-next="4"><span class="font-bold text-blue-300">海綿寶寶型：</span>來吧！知識就是力量！</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="4">耗盡預算，打造一座巨大無比的一站式AI融合反應爐，固定在母艦上。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="4">試著用倉庫裡的備用零件自己拼湊一台，能動就好。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="4">建構一套「混合雲引擎陣列」，彈性擴充、自動調配，並交由銀河頂尖的「MSP維運公會」隨時監控維護。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="4">採購一台標準的通用型引擎，但節省預算不聘請專業技師維護。</div>
                         </div>
                     </div>
-                    <!-- 問題4: 創造力 -->
+                    <!-- 問題4: 航道抉擇 -->
                     <div id="question-4" class="w-full flex-shrink-0 hidden">
-                        <h2 class="text-xl mb-4">如果沒有SOP，需要你自由發揮時，你感覺...</h2>
+                        <h2 class="text-xl mb-4">情境：引擎動力十足，星圖也清晰無比。面對數千個未知星系，你如何決定優先探索哪一個，才能找到最高價值的「資源星球」(潛力顧客)？</h2>
                         <div class="space-y-3">
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="95" data-next="5">太棒了！空白畫布就是我的遊樂場。</div>
-                             <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="5">有點小慌，但樂於嘗試新路線。</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="65" data-next="5">等等，可以給我一些參考範例嗎？</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="5">啟動「AI航道預測系統」，分析數據並精準預測出「資源訊號」最強的星系，規劃最佳航線。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="5">朝著看起來最亮的那個星系前進，感覺那裡會有好東西。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="5">派出大量無人偵察機，對每個星系都進行初步掃描，雖然有些耗時耗力。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="5">沿著數百年前的古老貿易航道飛行，因為大家都這麼走。</div>
                         </div>
                     </div>
-                    <!-- 問題5: 行動力 -->
+                    <!-- 問題5: 首次接觸 -->
                     <div id="question-5" class="w-full flex-shrink-0 hidden">
-                        <h2 class="text-xl mb-4">有了靈感或任務，你通常會？</h2>
+                        <h2 class="text-xl mb-4">情境：你的艦隊抵達了一個充滿潛力資源的星球。為了建立友好貿易關係，你發出的第一道訊息該是什麼？</h2>
                         <div class="space-y-3">
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="95" data-next="6"><span class="text-2xl mr-3">🏃</span> 馬上動起來，先做再調整！</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="6"><span class="text-2xl mr-3">📋</span> 先列清單，計畫再行動。</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="65" data-next="6"><span class="text-2xl mr-3">🛋️</span> 需要點時間醞釀，慢慢來。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="6">將母艦直接停在星球上空，用探照燈發出「我們來了」的訊號。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="6">向星球全境隨機投放大量的免費物資樣品，希望能吸引注意。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="6">向全星球廣播一則標準制式的「友好貿易邀請」。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="6">透過AI分析該星球文化與需求，向其領袖傳送一段個人化的全息投影訊息，精準表達合作誠意。</div>
                         </div>
                     </div>
-                    <!-- 問題6: 抗壓力 -->
+                    <!-- 問題6: 永恆繁榮 -->
                     <div id="question-6" class="w-full flex-shrink-0 hidden">
-                        <h2 class="text-xl mb-4">當事情不如預期時，你會怎麼面對？</h2>
+                        <h2 class="text-xl mb-4">情境：貿易航線大獲成功！但宇宙海盜 (駭客) 也盯上了你。你該如何保護艦隊，並確保航線長治久安？</h2>
                         <div class="space-y-3">
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="95" data-next="7"><span class="text-2xl mr-3">🔄</span> 快速調整策略，下一局更好！</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="75" data-next="7"><span class="text-2xl mr-3">🤯</span> 需要時間消化，然後慢慢復原。</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="7"><span class="text-2xl mr-3">😤</span> 一直想著那件事，有點難釋懷。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="submit">聘請「SOC銀河安全作戰中心」，進行全天候威脅監控與防禦，並持續優化艦隊系統，防患未然。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="submit">祈禱自己運氣好，並且命令艦隊飛快一點。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="submit">只教導船員基本的格鬥術，應對登艦作戰。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="submit">為所有船艦都加裝最厚的裝甲與最強的雷射炮。</div>
                         </div>
-                    </div>
-                    <!-- 問題7: 超能力與學校 -->
-                    <div id="question-7" class="w-full flex-shrink-0 hidden">
-                        <h2 class="text-xl mb-4">最後，來定義你的獨特之處！</h2>
-                        <div class="mb-6">
-                            <label for="superpower-input" class="block text-base mb-2">除了課本，你最酷的技能是？</label>
-                            <input id="superpower-input" type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="例如：迷因製造、貓咪溝通…">
-                        </div>
-                        <div>
-                             <label for="school-input" class="block text-base mb-2">想分享在儀表板上嗎？告訴我們你的學校/公司 (選填)</label>
-                             <input id="school-input" type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="你的未來主場！">
-                        </div>
-                        <button id="submit-btn" class="btn-primary w-full py-3 rounded-lg text-lg font-bold mt-8">查看我的儀表板</button>
                     </div>
                 </div>
             </div>
@@ -256,211 +264,186 @@
         <!-- 讀取畫面 -->
         <div id="loading-screen" class="hidden card rounded-2xl p-8 text-center">
             <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-t-2 border-blue-500 mx-auto"></div>
-            <h2 class="text-2xl font-bold mt-6">正在生成儀表板...</h2>
-            <p id="loading-text" class="text-gray-300 mt-2">正在從宇宙數據庫中抓取您的洞察...</p>
+            <h2 class="text-2xl font-bold mt-6">正在分析您的「數力」...</h2>
+            <p id="loading-text" class="text-gray-300 mt-2">校準航向中...</p>
         </div>
 
         <!-- 結果畫面 -->
         <div id="result-screen" class="hidden">
-            <!-- 這部分是將要被轉換成圖片的區域 -->
             <div id="dashboard-to-capture" class="card rounded-2xl p-6 sm:p-8 w-full gradient-bg">
                 <div class="text-center border-b border-gray-600 pb-4 mb-4">
-                     <p class="text-xs text-blue-300">LnData 麟數據科技</p>
-                     <h1 id="dashboard-main-title" class="text-3xl font-bold mt-2"> </h1>
-                     <h2 id="dashboard-subtitle" class="text-xl font-medium text-gray-300 mt-1"> </h2>
-                     <p id="dashboard-school" class="hidden text-amber-300 font-semibold mt-2"></p>
+                     <p class="text-xs text-blue-300">自由系統×LnData《數力覺醒：AI銀河轉型啟航》</p>
+                     <h1 id="commander-name" class="text-3xl font-bold mt-3">指揮官</h1>
+                     <h2 id="commander-title" class="text-2xl font-semibold text-amber-300 mt-1"></h2>
                 </div>
                
-                <div class="grid grid-cols-2 gap-4 items-center">
-                    <!-- 左側儀表 -->
-                    <div class="col-span-1 flex flex-col items-center justify-center">
-                        <h3 class="font-semibold text-lg mb-2">未來潛力指數</h3>
-                        <div id="gauge-chart" class="relative w-40 h-24"></div>
-                    </div>
-                     <!-- 右側徽章 -->
-                    <div class="col-span-1 flex flex-col items-center justify-center bg-gray-700/50 rounded-xl p-4 h-full">
-                         <h3 class="font-semibold text-lg mb-2">稀有成就徽章</h3>
-                         <div id="superpower-badge" class="text-yellow-300 text-5xl">🏆</div>
-                         <p id="superpower-text" class="text-center font-bold text-sm mt-1"></p>
+                <!-- 數力圖表 -->
+                <div class="my-6 flex flex-col items-center justify-center">
+                    <h3 class="font-semibold text-lg mb-2">您的數力</h3>
+                    <div id="gauge-chart" class="relative w-48 h-28">
+                        <!-- SVG for gauge will be injected here -->
                     </div>
                 </div>
 
-                <!-- 進度條區域 -->
-                <div class="mt-6 space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1"><span class="text-base font-medium text-blue-300">學習力</span><span id="learning-value" class="text-sm font-medium"></span></div>
-                        <div class="w-full bg-gray-600 rounded-full h-4"><div id="learning-bar" class="bg-blue-500 h-4 rounded-full"></div></div>
+                <div class="grid grid-cols-2 gap-6 my-6">
+                    <div class="text-center bg-gray-700/50 rounded-xl p-4">
+                        <h3 class="font-semibold text-lg mb-2">艦隊吉祥物</h3>
+                        <div id="superpower-badge" class="text-yellow-300 text-5xl">👾</div>
+                        <p id="mascot-display" class="text-xl mt-2 text-amber-300"></p>
                     </div>
-                    <div>
-                        <div class="flex justify-between mb-1"><span class="text-base font-medium text-purple-300">創造力</span><span id="creativity-value" class="text-sm font-medium"></span></div>
-                        <div class="w-full bg-gray-600 rounded-full h-4"><div id="creativity-bar" class="bg-purple-500 h-4 rounded-full"></div></div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-1"><span class="text-base font-medium text-green-300">行動力</span><span id="action-value" class="text-sm font-medium"></span></div>
-                        <div class="w-full bg-gray-600 rounded-full h-4"><div id="action-bar" class="bg-green-500 h-4 rounded-full"></div></div>
-                    </div>
-                     <div>
-                        <div class="flex justify-between mb-1"><span class="text-base font-medium text-yellow-300">抗壓力</span><span id="stress-value" class="text-sm font-medium"></span></div>
-                        <div class="w-full bg-gray-600 rounded-full h-4"><div id="stress-bar" class="bg-yellow-500 h-4 rounded-full"></div></div>
+                    <div class="text-center bg-gray-700/50 rounded-xl p-4">
+                        <h3 class="font-semibold text-lg mb-2">AI武器</h3>
+                        <div id="superpower-badge" class="text-yellow-300 text-5xl">⚔️</div>
+                        <p id="slogan-display" class="text-xl mt-2 text-amber-300"></p>
                     </div>
                 </div>
-                
-                <!-- 數據洞察 -->
+
                 <div class="mt-6 bg-gray-800/70 p-4 rounded-lg">
-                    <h3 class="font-bold text-lg mb-2">📊 數據洞察</h3>
-                    <p id="insight-text" class="text-sm text-gray-300"></p>
+                    <h3 class="font-bold text-lg mb-2">⭐最終任務報告</h3>
+                    <p id="result-narrative" class="text-sm text-gray-300"></p>
                 </div>
             </div>
             
-            <!-- 操作按鈕 -->
             <div class="mt-6 flex flex-col sm:flex-row gap-4">
-                 <button id="download-btn" class="btn-primary w-full py-3 rounded-lg text-lg font-bold">下載儀表板並繼續</button>
+                 <button id="download-btn" class="btn-primary w-full py-3 rounded-lg text-lg font-bold">下載任務報告並繼續</button>
             </div>
         </div>
 
         <!-- 分享頁面 -->
         <div id="share-screen" class="hidden">
             <div class="card rounded-2xl p-8 text-center">
-                <h2 class="text-3xl font-bold mb-4">恭喜完成！</h2>
-                <p class="text-gray-300 mb-6">儀表板圖片已下載。請依下列步驟完成任務，即可找工作人員兌換精美獎勵！</p>
+                <h2 class="text-3xl font-bold mb-4">任務完成！</h2>
+                <p class="text-gray-300 mb-6">任務報告已下載。請依下列步驟回報，即可向艦隊後勤（LnData工作人員）領取獎勵！，即可兌換精美獎勵！依下列步驟完成任務，還有機會抽取額外大獎喔！</p>
                 <div class="text-left bg-gray-800/50 p-6 rounded-lg space-y-4">
-                    <div>
+                     <div>
                         <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg mr-4 float-left">1</span>
-                        <p class="font-semibold">公開分享儀表板圖片至您的社群平台 (FB/IG)。</p>
+                        <p class="font-semibold">公開分享儀表板圖片至您的社群平台 (FB/IG)。發文、打卡、限時動態都可以！</p>
                     </div>
                     <div>
                         <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg mr-4 float-left">2</span>
-                        <p class="font-semibold">貼文需包含指定 Hashtag: <span class="text-amber-300">#LnData人生儀表板</span></p>
+                        <p class="font-semibold">貼文需包含（擇一）指定 Hashtag <span class="text-amber-300">#數據領航IT護航</span>；或標記<span class="text-amber-300"> LnData</span>、<span class="text-amber-300">自由系統</span>帳號</p>
                     </div>
                      <div>
                         <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg mr-4 float-left">3</span>
-                        <p class="font-semibold">向攤位工作人員出示您的分享畫面！</p>
+                        <p class="font-semibold">向攤位工作人員出示您的分享畫面，即可獲得額外*抽獎機會！</p>
                     </div>
+                    <div>
+                        <p class="text-sm text-gray-300">*將依據hashtags或標記判定抽獎資格，記得將貼文設定為公開分享。7/4前將統計完並通知中獎人(依據您留下的名片聯絡資訊)。</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="mt-2 flex flex-col sm:flex-row gap-4">
+                    <a href="https://www.lndata.com/" target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-3 rounded-lg text-lg font-bold inline-block">填寫商機表單獲得更多抽獎機會</a>
                 </div>
                 <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                    <a href="https://www.lndata.com/" target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-3 rounded-lg text-lg font-bold inline-block">探索 LnData 官網</a>
-                    <a href="https://forms.gle/your-feedback-form-id" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full py-3 rounded-lg text-lg font-bold inline-block">填寫回饋問卷</a>
+                    <a href="https://www.lndata.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full py-3 rounded-lg text-lg font-bold inline-block">探索 LnData 官網</a>
+                    <a href="https://www.lndata.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full py-3 rounded-lg text-lg font-bold inline-block">探索自由系統官網</a>
                 </div>
-                <button id="restart-btn" class="text-gray-400 hover:text-white transition mt-8">重新測驗一次</button>
+                <div class="mt-8 flex justify-center items-center gap-x-8">
+                    <button id="back-to-result-btn" class="text-gray-400 hover:text-white transition">‹ 返回任務報告</button>
+                    <button id="restart-btn" class="text-gray-400 hover:text-white transition">重新啟航 ›</button>
+                </div>
             </div>
         </div>
-
     </div>
 
-    <!-- LnData Logo -->
+    <a href="https://www.lndata.com/" target="_blank" rel="noopener noreferrer" class="fs-logo">
+        <img src="./img/FS-logo-h.png" alt="自由系統 Logo"
+        onerror="this.onerror=null; this.src='https://placehold.co/120x40/FFFFFF/000000?text=LnData';">
+    </a>
     <a href="https://www.lndata.com/" target="_blank" rel="noopener noreferrer" class="lndata-logo">
-        <img src="https://www.lndata.com/wp-content/uploads/2021/03/LnData_logo_gw.png" alt="LnData 麟數據科技 Logo"
+        <img src="./img/LnData_logo_gw.png" alt="LnData 麟數據科技 Logo"
         onerror="this.onerror=null; this.src='https://placehold.co/120x40/FFFFFF/000000?text=LnData';">
     </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // DOM 元素獲取
-            const startScreen = document.getElementById('start-screen');
-            const quizScreen = document.getElementById('quiz-screen');
-            const loadingScreen = document.getElementById('loading-screen');
-            const resultScreen = document.getElementById('result-screen');
-            const shareScreen = document.getElementById('share-screen');
-            
-            const startBtn = document.getElementById('start-btn');
-            const nameInput = document.getElementById('name-input');
-            const nameSubmitBtn = document.getElementById('name-submit-btn');
-            const optionCards = document.querySelectorAll('.option-card');
-            const submitBtn = document.getElementById('submit-btn');
-            const downloadBtn = document.getElementById('download-btn');
-            const restartBtn = document.getElementById('restart-btn');
-
-            const progressBar = document.getElementById('progress-bar');
-            const questionNumber = document.getElementById('question-number');
-            const questionTitle = document.getElementById('question-title');
-
-            const superpowerInput = document.getElementById('superpower-input');
-            const schoolInput = document.getElementById('school-input');
-            const dashboardToCapture = document.getElementById('dashboard-to-capture');
-
-            // 儲存答案的物件
-            let userAnswers = {};
-            const questionTitles = ["你的名字", "心情儀錶盤", "學習力", "創造力", "行動力", "抗壓力", "個人特質"];
-            const TOTAL_QUESTIONS = 7;
-            
-            // 頁面切換函數
-            const showScreen = (screen) => {
-                startScreen.classList.add('hidden');
-                quizScreen.classList.add('hidden');
-                loadingScreen.classList.add('hidden');
-                resultScreen.classList.add('hidden');
-                shareScreen.classList.add('hidden');
-                screen.classList.remove('hidden');
+            const screens = {
+                start: document.getElementById('start-screen'),
+                quiz: document.getElementById('quiz-screen'),
+                loading: document.getElementById('loading-screen'),
+                result: document.getElementById('result-screen'),
+                share: document.getElementById('share-screen'),
             };
 
-            // 開始按鈕事件
-            startBtn.addEventListener('click', () => {
-                showScreen(quizScreen);
+            const inputs = {
+                name: document.getElementById('name-input'),
+                mascot: document.getElementById('mascot-input'),
+                slogan: document.getElementById('slogan-input'),
+            };
+            
+            const buttons = {
+                start: document.getElementById('start-btn'),
+                nameSubmit: document.getElementById('name-submit-btn'),
+                download: document.getElementById('download-btn'),
+                backToResult: document.getElementById('back-to-result-btn'),
+                restart: document.getElementById('restart-btn'),
+            };
+            
+            const optionCards = document.querySelectorAll('.option-card');
+            const progressBar = document.getElementById('progress-bar');
+            const questionNumberEl = document.getElementById('question-number');
+            const questionTitleEl = document.getElementById('question-title');
+
+            let userAnswers = {};
+            const questionTitles = ["建立檔案", "艦隊的基石", "引擎的打造", "航道的抉擇", "首次的接觸", "永恆的繁榮"];
+            const TOTAL_QUIZ_STAGES = 6;
+            
+            const showScreen = (screenName) => {
+                Object.values(screens).forEach(s => s.classList.add('hidden'));
+                screens[screenName].classList.remove('hidden');
+            };
+
+            buttons.start.addEventListener('click', () => {
+                showScreen('quiz');
                 showQuestion(1);
             });
             
-            // 姓名提交按鈕事件
-            nameSubmitBtn.addEventListener('click', () => {
-                const name = nameInput.value.trim();
-                if (name === "") {
-                    alert("請輸入你的名字或暱稱！");
+            buttons.nameSubmit.addEventListener('click', () => {
+                if (!inputs.name.value.trim() || !inputs.mascot.value.trim() || !inputs.slogan.value.trim()) {
+                    alert("指揮官，請完成所有艦隊檔案欄位！");
                     return;
                 }
-                userAnswers[1] = name;
+                userAnswers.name = inputs.name.value.trim();
+                userAnswers.mascot = inputs.mascot.value.trim();
+                userAnswers.slogan = inputs.slogan.value.trim();
+                userAnswers.scores = [];
                 showQuestion(2);
             });
 
-            // 處理問答選項
             optionCards.forEach(card => {
                 card.addEventListener('click', () => {
                     const questionDiv = card.closest('div[id^="question-"]');
                     const questionId = parseInt(questionDiv.id.split('-')[1]);
-                    const nextQuestionId = parseInt(card.dataset.next);
+                    const nextAction = card.dataset.next;
                     
-                    userAnswers[questionId] = card.dataset.value;
+                    userAnswers.scores[questionId - 2] = parseInt(card.dataset.value);
 
                     questionDiv.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
                     card.classList.add('selected');
 
                     setTimeout(() => {
-                        if (nextQuestionId && document.getElementById(`question-${nextQuestionId}`)) {
-                            showQuestion(nextQuestionId);
+                        if (nextAction === 'submit') {
+                            showScreen('loading');
+                            simulateLoadingAndGenerateResult();
+                        } else {
+                            showQuestion(parseInt(nextAction));
                         }
                     }, 300);
                 });
             });
 
-            // 顯示特定問題
             function showQuestion(id) {
                 document.querySelectorAll('div[id^="question-"]').forEach(q => q.classList.add('hidden'));
                 document.getElementById(`question-${id}`).classList.remove('hidden');
 
-                progressBar.style.width = `${id / TOTAL_QUESTIONS * 100}%`;
-                questionNumber.textContent = `問題 ${id} / ${TOTAL_QUESTIONS}`;
-                questionTitle.textContent = questionTitles[id - 1];
+                progressBar.style.width = `${id / TOTAL_QUIZ_STAGES * 100}%`;
+                questionNumberEl.textContent = `任務 ${id} / ${TOTAL_QUIZ_STAGES}`;
+                questionTitleEl.textContent = questionTitles[id - 1];
             }
 
-            // 最終提交按鈕事件
-            submitBtn.addEventListener('click', () => {
-                const superpower = superpowerInput.value.trim();
-                if (superpower === "") {
-                    alert("請輸入你最酷的技能！");
-                    return;
-                }
-                userAnswers[7] = superpower;
-                userAnswers[8] = schoolInput.value.trim(); // 用8號key來儲存學校
-                
-                showScreen(loadingScreen);
-                simulateLoadingAndGenerateResult();
-            });
-
-            // 模擬讀取並生成結果
             function simulateLoadingAndGenerateResult() {
-                const loadingTexts = [
-                    "分析您的獨特演算法...",
-                    "與全球潛力數據庫進行比對...",
-                    "正在繪製您的專屬圖表..."
-                ];
+                const loadingTexts = ["校準航向中...", "分析艦隊決策...", "計算數力指數..."];
                 let textIndex = 0;
                 document.getElementById('loading-text').textContent = loadingTexts[0];
                 const interval = setInterval(() => {
@@ -470,69 +453,44 @@
                     } else {
                         clearInterval(interval);
                         generateResult();
-                        showScreen(resultScreen);
+                        showScreen('result');
                     }
                 }, 1000);
             }
             
-            // 生成儀表板結果
             function generateResult() {
-                // 1. 設置主標題、副標題和學校
-                const name = userAnswers[1];
-                document.getElementById('dashboard-main-title').textContent = `${name}的潛力儀表板`;
-                
-                const moodKey = userAnswers[2];
-                const titleMap = {
-                    'A': '一份「超乎預期」的潛力儀表板',
-                    'B': '一份「穩健佈局」的潛力儀表板',
-                    'C': '一份「準備逆襲」的潛力儀表板',
-                    'D': '一份「即將重啟」的潛力儀表板'
-                };
-                document.getElementById('dashboard-subtitle').textContent = titleMap[moodKey];
-                
-                const school = userAnswers[8];
-                const schoolEl = document.getElementById('dashboard-school');
-                if (school) {
-                    schoolEl.textContent = `🎓 ${school}`;
-                    schoolEl.classList.remove('hidden');
+                const totalScore = userAnswers.scores.reduce((acc, score) => acc + score, 0);
+                const averageScore = Math.round(totalScore / userAnswers.scores.length);
+
+                let title = `指揮官 ${userAnswers.name}`;
+                let narrative = '';
+
+                if (averageScore >= 90) {
+                    title = '【智能宇宙絕地武士】';
+                    narrative = `指揮官${userAnswers.name}，恭喜你完美駕馭了「數力」，你帶著吉祥物 ${userAnswers.mascot} 跟AI武器 ${userAnswers.slogan} ，將數據洞察與穩固的艦隊實力結合，成功抵達「繁榮星系」，建立了銀河中最璀璨的商業帝國。你的傳奇，將在宇宙中永世流傳。`;
+                } else if (averageScore >= 80) {
+                    title = '【轉型艦隊司令官】';
+                    narrative = `指揮官${userAnswers.name}，你擁有卓越的戰略眼光！你的艦隊在吉祥物「${userAnswers.mascot}」的守護下實力堅強，離「繁榮星系」僅一步之遙。除了${userAnswers.slogan}，若能在艦隊的「維運安全」與「自動化」上稍加優化，你的霸業將無人能敵。歡迎到洽談區，讓我們的領航員為您規劃最後一哩路。`;
+                } else if (averageScore >= 70) {
+                    title = '【勇敢的轉型拓荒者】';
+                    narrative = `指揮官${userAnswers.name}，你的勇氣可嘉！你已帶著${userAnswers.mascot}勇敢地駛入AI銀河，但你的艦隊引擎不穩、星圖模糊，時常陷入險境。你需要更穩固的基礎建設與更精準的數據羅盤，搭配你的${userAnswers.slogan}發揮最佳戰力！別擔心，我們的艦隊工程師能幫您全面升級。`;
                 } else {
-                    schoolEl.classList.add('hidden');
+                    title = '【迷航的太空數位新人】';
+                    narrative = `指揮官${userAnswers.name}，你的艦隊正在數據黑洞的邊緣漂移！吉祥物「${userAnswers.mascot}」也顯得有些無助。你急需建立一套可靠的導航與動力系統。前方充滿危險，帶上你的${userAnswers.slogan}尋求協助吧！請立即與我們攤位上的任何一位船員聯繫，讓我們為你校準航向！`;
                 }
+                
+                document.getElementById('commander-name').textContent = `指揮官 ${userAnswers.name}`;
+                document.getElementById('commander-title').textContent = title;
+                document.getElementById('mascot-display').textContent = userAnswers.mascot;
+                document.getElementById('slogan-display').textContent = userAnswers.slogan;
+                document.getElementById('result-narrative').textContent = narrative;
 
-                // 2. 計算潛力指數 (改為各項指標平均)
-                const learningScore = parseInt(userAnswers[3]);
-                const creativityScore = parseInt(userAnswers[4]);
-                const actionScore = parseInt(userAnswers[5]);
-                const stressScore = parseInt(userAnswers[6]);
-                const potentialScore = Math.round((learningScore + creativityScore + actionScore + stressScore) / 4);
-                createGaugeChart(potentialScore);
-
-                // 3. 設置超能力徽章
-                document.getElementById('superpower-text').textContent = userAnswers[7];
-
-                // 4. 設置進度條
-                document.getElementById('learning-value').textContent = `${learningScore}%`;
-                document.getElementById('learning-bar').style.width = `${learningScore}%`;
-                document.getElementById('creativity-value').textContent = `${creativityScore}%`;
-                document.getElementById('creativity-bar').style.width = `${creativityScore}%`;
-                document.getElementById('action-value').textContent = `${actionScore}%`;
-                document.getElementById('action-bar').style.width = `${actionScore}%`;
-                document.getElementById('stress-value').textContent = `${stressScore}%`;
-                document.getElementById('stress-bar').style.width = `${stressScore}%`;
-
-                // 5. 設置數據洞察文案
-                const textMaps = {
-                    learning: {'75': '濃縮咖啡型', '85': '手沖慢燉型', '95': '海綿寶寶型'},
-                    creativity: {'95': '畫布級', '80': '探索家型', '65': '建築師型'},
-                    action: {'95': '行動派', '80': '計畫通', '65': '沉思者'},
-                    stress: {'95': '韌性十足', '75': '自我療癒型', '60': '感受細膩型'}
-                };
-                document.getElementById('insight-text').textContent = `數據顯示，${name}是一位「${textMaps.learning[learningScore]}」學習者，同時是「${textMaps.action[actionScore]}」與「${textMaps.stress[stressScore]}」的實踐家。您獨特的「${userAnswers[7]}」超能力，更是無價的資產。記住，所有指標都是動態的，未來由您親手創造！`;
+                createGaugeChart(averageScore);
             }
-
-            // 創建儀表盤圖表
+            
             function createGaugeChart(value) {
                 const gaugeChartContainer = document.getElementById('gauge-chart');
+                if (!gaugeChartContainer) return;
                 const percentage = value / 100;
                 const degrees = percentage * 180;
                 const rads = (degrees * Math.PI) / 180;
@@ -540,23 +498,21 @@
                 const x = r * Math.cos(rads);
                 const y = r * Math.sin(rads);
                 gaugeChartContainer.innerHTML = `
-                    <svg viewBox="-100 -20 200 120" class="w-full h-full">
+                    <svg viewBox="-100 -20 200 110" class="w-full h-full">
                         <defs>
                             <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" stop-color="#3b82f6" />
                                 <stop offset="100%" stop-color="#a855f7" />
                             </linearGradient>
                         </defs>
-                        <path d="M -80 80 A 80 80 0 0 1 80 80" fill="none" stroke="#4b5563" stroke-width="12" stroke-linecap="round" />
-                        <path d="M -80 80 A 80 80 0 0 1 ${-x} ${80 - y}" fill="none" stroke="url(#gaugeGradient)" stroke-width="12" stroke-linecap="round" />
-                        <text x="0" y="50" text-anchor="middle" font-size="32" font-weight="bold" fill="#fff">${value}</text>
-                        <text x="0" y="75" text-anchor="middle" font-size="12" fill="#9ca3af">Potentials</text>
+                        <path d="M -80 80 A 80 80 0 0 1 80 80" fill="none" stroke="#4b5563" stroke-width="16" stroke-linecap="round" />
+                        <path d="M -80 80 A 80 80 0 0 1 ${-x} ${80 - y}" fill="none" stroke="url(#gaugeGradient)" stroke-width="16" stroke-linecap="round" />
+                        <text x="0" y="65" text-anchor="middle" font-size="40" font-weight="bold" fill="#fff">${value}</text>
                     </svg>
                 `;
             }
 
-            // 下載按鈕事件 (修改後)
-            downloadBtn.addEventListener('click', () => {
+            buttons.download.addEventListener('click', () => {
                 html2canvas(document.getElementById('dashboard-to-capture'), {
                     scale: 2,
                     useCORS: true,
@@ -564,25 +520,23 @@
                 }).then(canvas => {
                     const image = canvas.toDataURL("image/png");
                     const link = document.createElement('a');
-                    link.download = `我的LnData人生儀表板-${userAnswers[1]}.png`;
+                    link.download = `數力覺醒任務報告-${userAnswers.name}.png`;
                     link.href = image;
                     link.click();
                     
-                    // 下載後延遲一小段時間再切換頁面，確保下載觸發
-                    setTimeout(() => {
-                        showScreen(shareScreen);
-                    }, 500);
+                    setTimeout(() => showScreen('share'), 500);
                 });
             });
+
+            buttons.backToResult.addEventListener('click', () => {
+                showScreen('result');
+            });
             
-            // 重新開始按鈕事件
-            restartBtn.addEventListener('click', () => {
+            buttons.restart.addEventListener('click', () => {
                 userAnswers = {};
-                nameInput.value = '';
-                superpowerInput.value = '';
-                schoolInput.value = '';
+                Object.values(inputs).forEach(input => input.value = '');
                 document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-                showScreen(startScreen); // 改為回到開始畫面
+                showScreen('start');
             });
         });
     </script>
