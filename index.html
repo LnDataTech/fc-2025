@@ -152,7 +152,7 @@
             <h1 class="text-3xl font-bold mb-2">數力覺醒：AI銀河轉型啟航</h1>
             <p class="text-gray-300 mb-2 ml-4 mr-4 text-center">留下您的名片並開始遊戲！完成即可領取紀念小物與抽取更多大獎！</p>
             <hr>
-            <p class="text-gray-300 mt-2 mb-6 text-left text-sm">在浩瀚的商業宇宙中，傳說存在著一個名為「繁榮星系」的地方。然而，航道上充滿了未知的「數據黑洞」與「維運隕石風暴」。作為肩負企業未來的艦隊指揮官，你必須喚醒體內潛藏的「數力」，從零開始打造一支無堅不摧的AI艦隊。你的每一個決策，都將決定艦隊的命運。指揮官，請下達你的指令，啟航吧！</p>
+            <p class="text-gray-300 mt-2 mb-6 text-left text-sm">在浩瀚的商業宇宙中，傳說存在著一個名為「繁榮星系」的地方。然而，航道上充滿了數據黑洞、維運隕石風暴、宇宙駭客等未知威脅。作為肩負企業未來的艦隊指揮官，你必須喚醒體內潛藏的「數力」，從零開始打造一支無堅不摧的AI艦隊。你的每一個決策，都將決定艦隊的命運。指揮官，請下達你的指令，啟航吧！</p>
             
             <div class="grid grid-cols-3 gap-4 items-center mb-6">
                 <div class="col-span-1">
@@ -239,22 +239,32 @@
                     </div>
                     <!-- 問題5: 首次接觸 -->
                     <div id="question-5" class="w-full flex-shrink-0 hidden">
-                        <h2 class="text-xl mb-4">情境：你的艦隊抵達了一個充滿潛力資源的星球。為了建立友好貿易關係，你發出的第一道訊息該是什麼？</h2>
+                        <h2 class="text-xl mb-4">情境：你的艦隊抵達了一個充滿潛力資源的星球。為了建立友好貿易關係與激起興趣，你發出的第一道訊息該是什麼？</h2>
                         <div class="space-y-3">
                             <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="6">將母艦直接停在星球上空，用探照燈發出「我們來了」的訊號。</div>
                             <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="6">向星球全境隨機投放大量的免費物資樣品，希望能吸引注意。</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="6">向全星球廣播一則標準制式的「友好貿易邀請」。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="6">向該星球最多人使用的社群平台發布「友好貿易邀請」短影音。</div>
                             <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="6">透過AI分析該星球文化與需求，向其領袖傳送一段個人化的全息投影訊息，精準表達合作誠意。</div>
                         </div>
                     </div>
-                    <!-- 問題6: 永恆繁榮 -->
+                    <!-- 問題5: 最佳外交 -->
                     <div id="question-6" class="w-full flex-shrink-0 hidden">
-                        <h2 class="text-xl mb-4">情境：貿易航線大獲成功！但宇宙海盜 (駭客) 也盯上了你。你該如何保護艦隊，並確保航線長治久安？</h2>
+                        <h2 class="text-xl mb-4">情境：你的艦隊已抵達目標星系，為了與當地智慧生命建立起高效的溝通管道，你需要一位全能的外交官。你會如何部署？</h2>
                         <div class="space-y-3">
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="submit">聘請「SOC銀河安全作戰中心」，進行全天候威脅監控與防禦，並持續優化艦隊系統，防患未然。</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="submit">祈禱自己運氣好，並且命令艦隊飛快一點。</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="submit">只教導船員基本的格鬥術，應對登艦作戰。</div>
-                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="submit">為所有船艦都加裝最厚的裝甲與最強的雷射炮。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="7">指派一位只會說「你好」、「再見」等固定格式詞語的禮儀機器人</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="7">部署一位需要聽到特定關鍵字指令才會回應的翻譯機器人</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="7">部署一個能串接全艦隊知識庫的「Copilot x Line AI外交官」，能全天候自動以當地語言回應各種問題。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="7">派駐一位AI外交官，但需要一名船員隨時在旁監控運作，否則可能出錯。</div>
+                        </div>
+                    </div>
+                    <!-- 問題6: 永恆繁榮 -->
+                    <div id="question-7" class="w-full flex-shrink-0 hidden">
+                        <h2 class="text-xl mb-4">情境：貿易航線已建立，但情報顯示，敵對勢力跟但宇宙駭客可能會偽裝成船員滲透艦隊，竊取機密。你該如何防範這種「內部威脅」，並確保航線長治久安？</h2>
+                        <div class="space-y-3">
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="100" data-next="submit">啟用「艦隊身分防護監測系統 (Microsoft Defender for Identity)」，持續分析船員帳號的行為模式，即時偵測任何異常。</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="60" data-next="submit">要求所有船員每天手動登記人員出勤記錄</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="80" data-next="submit">在艦橋門口加裝一道能量最強的網路防火牆</div>
+                            <div class="option-card p-4 rounded-lg cursor-pointer" data-value="90" data-next="submit">安裝一個雲端資料儲存同步系統，確保所有人的資料都一樣</div>
                         </div>
                     </div>
                 </div>
@@ -386,8 +396,8 @@
             const questionTitleEl = document.getElementById('question-title');
 
             let userAnswers = {};
-            const questionTitles = ["建立檔案", "艦隊的基石", "引擎的打造", "航道的抉擇", "首次的接觸", "永恆的繁榮"];
-            const TOTAL_QUIZ_STAGES = 6;
+            const questionTitles = ["建立檔案", "艦隊的基石", "引擎的打造", "航道的抉擇", "首次的接觸","星際外交官", "永恆的繁榮"];
+            const TOTAL_QUIZ_STAGES = 7;
             
             const showScreen = (screenName) => {
                 Object.values(screens).forEach(s => s.classList.add('hidden'));
